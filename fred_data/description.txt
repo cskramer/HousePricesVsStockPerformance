@@ -1,0 +1,8 @@
+CPIAUCSL.csv            Consumer Price Index for All Urban Consumers: All Items US City Average 
+DGS10.csv               10 year Treasury Constant Maturity Rate 
+JHDUSRGDPBR.csv         Dates of U.S. recessions as inferred by GDP-based recession indicator 
+MORTGAGE30US.csv        30 year Mortgage Rates
+OBMMIJUMBO30YF.csv      30 year Jumbo Mortgage Rates 
+RECPROUSM156N.csv       Smoothed U.S. Recession Probabilities 
+SPCS10RSA.csv           S&P/Case-Shiller 10-City Composite Home Price Index 
+UMCSENT.csv             Consumer Sentiment 
