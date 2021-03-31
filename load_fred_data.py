@@ -1,9 +1,11 @@
 import pandas as pd
 import os
 
+
 def load_data(file_name):
-    df = pd.read_csv(file_name, encoding='utf8')
+    df = pd.read_csv(file_name, encoding="utf8")
     return df
+
 
 def main():
     fred_dir = "fred_data"
@@ -27,12 +29,26 @@ def main():
     consumer_sentiment_frame = load_data(consumer_sentiment_file)
     home_ownership_rate_frame = load_data(home_ownership_rate_file)
 
-    complete_fred_data = pd.concat( [case_shiller_10_city_frame, cpi_frame,
-                                     treasury_10_frame, recession_dates_frame,
-                                     mortgage_30_frame, jumbo_mortgage_30_frame,
-                                     recession_prob_frame, consumer_sentiment_frame,
-                                     home_ownership_rate_frame],
-                                    axis=0, join='outer', ignore_index=False,
-                                    keys=None, levels=None, names=None)
-if __name__ == '__main__':
+    complete_fred_data = pd.concat(
+        [
+            case_shiller_10_city_frame,
+            cpi_frame,
+            treasury_10_frame,
+            recession_dates_frame,
+            mortgage_30_frame,
+            jumbo_mortgage_30_frame,
+            recession_prob_frame,
+            consumer_sentiment_frame,
+            home_ownership_rate_frame,
+        ],
+        axis=0,
+        join="outer",
+        ignore_index=False,
+        keys=None,
+        levels=None,
+        names=None,
+    )
+
+
+if __name__ == "__main__":
     main()
