@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Gets housing (Fre) csv files for analysis
+Gets housing (Fred) csv files for analysis
 
 Created on Wed Mar 31 18:56:57 2021
 
