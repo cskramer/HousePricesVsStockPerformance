@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Util methods for project 2
+
 Created on Wed Mar 31 20:20:10 2021
 
-@author: shane
+@authors: Shane Kramer and Ted Brown
 """
+
 import pandas as pd
 import numpy as np
 import seaborn as sns

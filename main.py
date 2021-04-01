@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Project 2 Main Method
+
+Created on Wed Mar 31 18:56:57 2021
+
+@authors: Shane Kramer and Ted Brown
+"""
+
 import pandas as pd
 import load_fred_data
 import load_index_data
