@@ -53,5 +53,26 @@ def get_fred_data():
         names=None,
     )
 
-    return case_shiller_10_city_frame
+    #nasdaq_frame.DATE = pd.to_datetime(nasdaq_frame.DATE)
+    #case_shiller_10_city_frame.DATE = pd.to_datetime(case_shiller_10_city_frame.DATE)
+    #plotting_data = pd.merge(
+    #    nasdaq_frame[["DATE", "Close"]],
+    #    case_shiller_10_city_frame[["DATE", "SPCS10RSA"]],
+    #    how="outer",
+    #    on="DATE",
+    #)
+
+    #scatter_chart = plt.figure(figsize=(5, 5))
+    #ax_scat = scatter_chart.add_subplot(1, 1, 1)
+    #ax_scat.set_title("NASDAQ Close vs. Case Shiller 10 City Composite")
+    #ax_scat.set_xlabel("NASDAQ Close ($)")
+    #ax_scat.set_ylabel("Case Shiller 10 City Composite (Index)")
+    #plotting_data = plotting_data.sort_values("SPCS10RSA", ascending=True)
+    #plt.scatter(plotting_data["Close"], plotting_data["SPCS10RSA"])
+    #plt.show()
+
+    #sns.set_theme(color_codes=True)
+    #sns.regplot(plotting_data["Close"], plotting_data["SPCS10RSA"])
+
+    return util.normalize_dataframe(case_shiller_10_city_frame, "SPCS10RSA")
 
