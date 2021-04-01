@@ -15,7 +15,7 @@ import util
 def main():
     
     # Pull in normalized market data
-    nasdaq_frame, sp500_frame, djii_frame = load_index_data.get_index_data()
+    nasdaq_frame, sp500_frame, djii_frame = load_index_data.get_normalized_index_data()
     
     nasdaq_frame = nasdaq_frame.rename(columns={"Date": "DATE"})    
     nasdaq_frame.DATE = pd.to_datetime(nasdaq_frame.DATE)
@@ -33,7 +33,7 @@ def main():
     
     util.generate_scatterplot("NASDAQ", nasdaq_frame, case_shiller_10_city_frame)
     util.generate_scatterplot("SP500", sp500_frame, case_shiller_10_city_frame)
-    util.generate_scatterplot("Dow Jones Industrial Average", djii_frame, case_shiller_10_city_frame)
+    util.generate_scatterplot("DJIA", djii_frame, case_shiller_10_city_frame)
 
 if __name__ == "__main__":
     main()

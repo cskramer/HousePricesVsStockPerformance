@@ -47,8 +47,6 @@ def normalize_dataframe(data_frame, column):
             plot
 '''
 def generate_scatterplot(indexName, indexFrame, housingFrame):
-    print("Hello")
-    print(indexFrame)
     plotting_data = pd.merge(
         indexFrame[["DATE", "Adj Close"]],
         housingFrame[["DATE", "SPCS10RSA"]],
