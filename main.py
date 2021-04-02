@@ -28,7 +28,7 @@ def main():
     djii_frame.DATE = pd.to_datetime(nasdaq_frame.DATE)
 
     # Retrieve and process case_shiller data
-    case_shiller_10_city_frame = load_fred_data.get_fred_data()
+    case_shiller_10_city_frame = load_fred_data.get_norm_cse10_data()
 
     case_shiller_10_city_frame.DATE = pd.to_datetime(case_shiller_10_city_frame.DATE)
 
