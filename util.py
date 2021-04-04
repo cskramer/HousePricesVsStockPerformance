@@ -6,11 +6,13 @@ Created on Wed Mar 31 20:20:10 2021
 
 @authors: Shane Kramer and Ted Brown
 """
+import os
+import sqlite3
 
-import pandas as pd
-import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 
 
@@ -67,3 +69,17 @@ def generate_scatterplot(index_name, index_frame, housing_frame):
 
     sns.set_theme(color_codes=True)
     sns.regplot(plotting_data["Adj Close"], plotting_data["SPCS10RSA"])
+
+
+def load_all_data_from_sql():
+    DB_DIR = "db"
+    DB_NAME = "alldata.db"
+    con = sqlite3.connect(os.path.join(DB_DIR, DB_NAME))
+    df = pd.read_sql(
+        "SELECT * from all_data",
+        con,
+        parse_dates={"DATE", "%Y-%m-%d"},
+        index_col="DATE",
+    )
+
+    return df.copy()
