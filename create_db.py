@@ -81,6 +81,7 @@ def main():
 
     complete_df = pd.merge(all_fred_df, all_index_df, how="outer", on="DATE")
     complete_df.sort_values("DATE")
+    complete_df = complete_df.set_index("DATE")
 
 
 if __name__ == "__main__":
