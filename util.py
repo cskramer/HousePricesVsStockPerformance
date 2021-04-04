@@ -72,6 +72,13 @@ def generate_scatterplot(index_name, index_frame, housing_frame):
 
 
 def load_all_data_from_sql():
+    """
+    open the sqlite database created from create_db.py and load it into a dataframe. This represents the raw
+    data as it was downloaded.
+    
+    :return: copy of a single pandas dataframe with all information for this project indexed and sorted by date
+    :rtype: pandas dataframe
+    """
     DB_DIR = "db"
     DB_NAME = "alldata.db"
     con = sqlite3.connect(os.path.join(DB_DIR, DB_NAME))

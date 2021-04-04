@@ -5,13 +5,15 @@ import pandas as pd
 
 def fix_index_frames(df, idx_name):
     """
+    Combining Stock Indicies in the same data frame with the same columns
+    require that columns be renamed.
     Date,Open,High,Low,Close,Adj Close,Volume
-    :param df:
-    :type df:
-    :param idx_name:
-    :type idx_name:
-    :return:
-    :rtype:
+    :param df: index data from yahoo finance.
+    :type df: pandas data frame
+    :param idx_name: prefix to append to the index columns
+    :type idx_name: string
+    :return: copy of the modified dataframe
+    :rtype: pandas data frame
     """
     df = df.rename(
         columns={
@@ -30,14 +32,14 @@ def fix_index_frames(df, idx_name):
 
 def main():
     """
-
+    Generate an sqlite database from a pandas table.
     :return:
     :rtype:
     """
     FRED_DIR = "fred_data"
     fred_filenames = (
-        "CPIAUCSL.csv",  # CPI
-        "DGS10.csv",  # 10 Treasury Constant Maturity Rate
+        "CPIAUCSL.csv",
+        "DGS10.csv",
         "JHDUSRGDPBR.csv",
         "MORTGAGE30US.csv",
         "OBMMIJUMBO30YF.csv",
