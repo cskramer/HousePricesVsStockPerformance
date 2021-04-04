@@ -1,27 +1,27 @@
 import os
-import sqlite3 as sql
+import sqlite3
 import pandas as pd
 
 
-def fix_index_frames(df, idxname):
+def fix_index_frames(df, idx_name):
     """
     Date,Open,High,Low,Close,Adj Close,Volume
     :param df:
     :type df:
-    :param idxname:
-    :type idxname:
+    :param idx_name:
+    :type idx_name:
     :return:
     :rtype:
     """
     df = df.rename(
         columns={
             "Date": "DATE",
-            "Open": idxname + "_" + "OPEN",
-            "High": idxname + "_" + "HIGH",
-            "Low": idxname + "_" + "LOW",
-            "Close": idxname + "_" + "CLOSE",
-            "Adj Close": idxname + "_" + "ADJCLOSE",
-            "Volume": idxname + "_" + "VOLUME",
+            "Open": idx_name + "_" + "OPEN",
+            "High": idx_name + "_" + "HIGH",
+            "Low": idx_name + "_" + "LOW",
+            "Close": idx_name + "_" + "CLOSE",
+            "Adj Close": idx_name + "_" + "ADJCLOSE",
+            "Volume": idx_name + "_" + "VOLUME",
         }
     )
     df.DATE = pd.to_datetime(df.DATE)
@@ -82,6 +82,14 @@ def main():
     complete_df = pd.merge(all_fred_df, all_index_df, how="outer", on="DATE")
     complete_df.sort_values("DATE")
     complete_df = complete_df.set_index("DATE")
+
+    DB_DIR = "db"
+    DB_NAME = "alldata.db"
+    con = sqlite3.connect(os.path.join(DB_DIR, DB_NAME))
+    cur = con.cursor()
+    complete_df.to_sql("all_data", con, if_exists="replace", index=True)
+    con.commit()
+    con.close()
 
 
 if __name__ == "__main__":
