@@ -1,2 +1,17 @@
+# compiled python bytecode
 __pycache__/
+
+# Notebook junk
 .ipynb_checkpoints
+
+# Word temporary
+~$*.doc*
+
+# Word Auto Backup File
+Backup of *.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
