@@ -75,7 +75,7 @@ def load_all_data_from_sql():
     """
     open the sqlite database created from create_db.py and load it into a dataframe. This represents the raw
     data as it was downloaded.
-    
+
     :return: copy of a single pandas dataframe with all information for this project indexed and sorted by date
     :rtype: pandas dataframe
     """
