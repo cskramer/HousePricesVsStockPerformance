@@ -5,8 +5,8 @@ import pandas as pd
 
 def main():
     filenames = (
-        "CPIAUCSL.csv",
-        "DGS10.csv",
+        "CPIAUCSL.csv",  # CPI
+        "DGS10.csv",  # 10 Treasury Constant Maturity Rate
         "JHDUSRGDPBR.csv",
         "MORTGAGE30US.csv",
         "OBMMIJUMBO30YF.csv",
@@ -23,8 +23,13 @@ def main():
         df.DATE = pd.to_datetime(df.DATE)
         dframes.append(df)
 
-    for df in dframes:
-        final_data = pd.merge(df[["DATE", "SPCS10RSA"]], how="outer", on="DATE",)
+    final_data = pd.merge(dframes[0], dframes[1], how="outer", on="DATE",)
+    i = 2
+    while i < len(dframes):
+        final_data = final_data.merge(dframes[i], how="outer", on="DATE",)
+        if i > len(dframes) - 1:
+            break
+        i = i + 1
 
 
 if __name__ == "__main__":
