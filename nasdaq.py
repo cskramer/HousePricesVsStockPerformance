@@ -40,6 +40,10 @@ def main():
     ndf = df[["IXIC_ADJCLOSE", "DJI_ADJCLOSE", "GSPC_ADJCLOSE", "SPCS10RSA"]].dropna()
     ndf = normalize_columns(ndf, ndf.columns)
     corr = ndf.corr()
+    pre_bubble_df = ndf.loc[:SPCS_BUBBLE_BEGIN]
+    bubble_df = ndf.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END]
+    post_bubble_df = ndf.loc[SPCS_BUBBLE_END:]
+    # slicing on an index 
     # mask = np.tril(np.ones_like(corr, dtype=bool))
     # cmap = sns.color_palette("Blues", as_cmap=True)
     # f, ax = plt.subplots(figsize=(15, 15))
