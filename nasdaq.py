@@ -32,8 +32,11 @@ def main():
 
     df = util.load_all_data_from_sql()
 
-    BEGIN_DATE = "1987-01-01"
+    SPCS10RSA_BEGIN_DATE = "1987-01-01"
+    DJII_BEGIN_DATE = "1992-02-01"
     END_DATE = "2021-01-01"
+    SPCS_BUBBLE_BEGIN = "1997-08-01"
+    SPCS_BUBBLE_END = "2009-01-01"
     ndf = df[["IXIC_ADJCLOSE", "DJI_ADJCLOSE", "GSPC_ADJCLOSE", "SPCS10RSA"]].dropna()
     ndf = normalize_columns(ndf, ndf.columns)
     corr = ndf.corr()
