@@ -8,3 +8,4 @@ SPCS10RSA.csv           S&P/Case-Shiller 10-City Composite Home Price Index
 CSUSHPISA.csv		S&P/Case-Shiller National Home Price Index 
 UMCSENT.csv             Consumer Sentiment 
 RSAHORUSQ156S.csv       Home Ownership Rates 
+CPILFESL.csv            Consumer Price Index for All Urban Consumers: All Items Less Food & Energy
