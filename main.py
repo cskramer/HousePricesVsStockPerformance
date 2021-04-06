@@ -34,6 +34,10 @@ def main():
     util.generate_scatterplot("NASDAQ", nasdaq_frame, case_shiller_10_city_frame)
     util.generate_scatterplot("SP500", sp500_frame, case_shiller_10_city_frame)
     util.generate_scatterplot("DJIA", djii_frame, case_shiller_10_city_frame)
+    
+    nasdaq_frame_norm = util.normalize_dataframe(nasdaq_frame, 'Adj Close')
+    case_shiller_norm = util.normalize_dataframe(case_shiller_10_city_frame, 'SPCS10RSA')
+    util.generate_lineplot("NASDAQ", nasdaq_frame_norm, case_shiller_norm)
 
 if __name__ == "__main__":
     main()

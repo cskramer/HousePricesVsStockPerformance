@@ -38,7 +38,7 @@ def normalize_dataframe(data_frame, column):
     return df_sklearn
 
 
-''' A function used to generate a scatterplot for housing prices/index data
+''' A function to generate a scatterplot for housing prices/index data
         In:
             indexName
             indexFrame
@@ -66,7 +66,36 @@ def generate_scatterplot(indexName, indexFrame, housingFrame):
     
     sns.set_theme(color_codes=True)
     sns.regplot(plotting_data["Adj Close"], plotting_data["SPCS10RSA"])
+
     
+''' A function to generate line plots for normalized housing prices/index data
+        # https://stackoverflow.com/questions/43941245/line-plot-with-data-points-in-pandas
+        In:
+            indexName
+            indexFrame
+            housingFrame 
+        Out:
+            plot
+'''
+def generate_lineplot(indexName, indexFrame, housingFrame):
+    plotting_data = pd.merge(
+        indexFrame[["DATE", "Adj Close"]],
+        housingFrame[["DATE", "SPCS10RSA"]],
+        how="outer",
+        on="DATE",
+    )
+    
+    print(plotting_data)
+    df = plotting_data, index=pd.date_range('1/1/1987', len(plotting_data), columns=list('AB'))
+                 
+    lines = df.plot.line(linestyle='-', markevery=100, marker='*', markerfacecolor='black')
+    
+    # show legend
+    #plt.legend()
+
+    # show graph
+    #plt.show()
+
 
 """
     A function to retrieve montly (period) csv for US Stock indices
