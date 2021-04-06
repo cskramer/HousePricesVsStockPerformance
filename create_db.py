@@ -64,7 +64,7 @@ def main():
             break
         i = i + 1
 
-    INDEX_DIR = "index_data\\yahooApi"
+    INDEX_DIR = os.path.join('index_data','yahooApi')
     DJI_FILENAME = "djii_1m.csv"
     IXIC_FILENAME = "nasdaq_1m.csv"
     GSPC_FILENAME = "sp500_1m.csv"
