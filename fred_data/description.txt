@@ -5,5 +5,6 @@ MORTGAGE30US.csv        30 year Mortgage Rates
 OBMMIJUMBO30YF.csv      30 year Jumbo Mortgage Rates 
 RECPROUSM156N.csv       Smoothed U.S. Recession Probabilities 
 SPCS10RSA.csv           S&P/Case-Shiller 10-City Composite Home Price Index 
+CSUSHPISA.csv		S&P/Case-Shiller National Home Price Index 
 UMCSENT.csv             Consumer Sentiment 
 RSAHORUSQ156S.csv       Home Ownership Rates 
