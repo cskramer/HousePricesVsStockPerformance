@@ -147,6 +147,8 @@ def main():
         print("Are any values Missing: ", bool(dframes[i].isnull().any()[0]))
         # print("Unique Values: ", dframes[i].iloc[,:0].unique())
         print("Check the Types: ", dframes[i].dtypes)
+        print("")
+        print("Check Index:\n", dframes[i].index)
         i = i + 1
 
 
