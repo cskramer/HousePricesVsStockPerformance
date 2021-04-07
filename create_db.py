@@ -1,7 +1,7 @@
 import os
 import sqlite3
 import pandas as pd
-
+import numpy as np
 
 def fix_index_frames(df, idx_name):
     """
@@ -54,6 +54,8 @@ def main():
     for fname in fred_filenames:
         df = pd.read_csv(os.path.join(FRED_DIR, fname), encoding="utf8")
         df.DATE = pd.to_datetime(df.DATE)
+        df = df.replace(".", np.nan)
+        df.iloc[:, 1] = df.iloc[:, 1].astype('float64')
         dframes.append(df)
 
     all_fred_df = pd.merge(dframes[0], dframes[1], how="outer", on="DATE",)
