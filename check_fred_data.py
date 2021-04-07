@@ -18,31 +18,102 @@ fred_filenames = (
 )
 fred_urls = (
     "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "https://fred.stlouisfed.org/series/DGS10",
+    "https://fred.stlouisfed.org/series/CPIAUCSL",
+    "https://fred.stlouisfed.org/series/JHDUSRGDPBR",
+    "https://fred.stlouisfed.org/series/MORTGAGE30US",
+    "https://fred.stlouisfed.org/series/OBMMIJUMBO30YF",
+    "https://fred.stlouisfed.org/series/RECPROUSM156N",
+    "https://fred.stlouisfed.org/series/UMCSENT",
+    "https://fred.stlouisfed.org/series/RSAHORUSQ156S",
+    "https://fred.stlouisfed.org/series/SPCS10RSA",
+    "https://fred.stlouisfed.org/series/CSUSHPISA",
     "https://fred.stlouisfed.org/series/CPILFESL",
 )
 fred_descriptions = (
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    """CPILFESL 
+    """
+    DGS10
+    10-Year Treasury Constant Maturity Rate
+    Source: Board of Governors of the Federal Reserve System (US)  
+    Release: H.15 Selected Interest Rates  
+    Units:  Percent, Not Seasonally Adjusted
+    Frequency:  Daily 
+    """,
+    """
+    CPIAUCSL
+    Consumer Price Index for All Urban Consumers: All Items in U.S. City Average
+    Source: U.S. Bureau of Labor Statistics  
+    Release: Consumer Price Index  
+    Units:  Index 1982-1984=100, Seasonally Adjusted
+    Frequency:  Monthly 
+    """,
+    """
+    JHDUSRGDPBR
+    Dates of U.S. recessions as inferred by GDP-based recession indicator
+    Source: Hamilton, James  
+    Release: GDP-Based Recession Indicator Index  
+    Units:  +1 or 0, Not Seasonally Adjusted
+    Frequency:  Quarterly 
+    """,
+    """
+    MORTGAGE30US
+    30-Year Fixed Rate Mortgage Average in the United States 
+    Source: Freddie Mac  
+    Release: Primary Mortgage Market Survey  
+    Units:  Percent, Not Seasonally Adjusted
+    Frequency:  Weekly, Ending Thursday 
+    """,
+    """
+    OBMMIJUMBO30YF
+    30-Year Fixed Rate Jumbo Mortgage Index 
+    Source: Optimal Blue  
+    Release: Optimal Blue Mortgage Market Indices  
+    Units:  Percent, Not Seasonally Adjusted
+    Frequency:  Daily 
+    """,
+    """
+    RECPROUSM156N
+    Smoothed U.S. Recession Probabilities 
+    Source: Chauvet, Marcelle
+    Source: Piger, Jeremy Max  
+    Release: U.S. Recession Probabilities  
+    Units:  Percent, Not Seasonally Adjusted
+    Frequency:  Monthly 
+    """,
+    """
+    UMCSENT
+    University of Michigan: Consumer Sentiment
+    Source: University of Michigan  
+    Release: Surveys of Consumers  
+    Units:  Index 1966:Q1=100, Not Seasonally Adjusted
+    Frequency:  Monthly 
+    """,
+    """
+    RSAHORUSQ156S
+    Homeownership Rate for the United States
+    Source: U.S. Census Bureau  
+    Release: Housing Vacancies and Homeownership  
+    Units:  Percent, Seasonally Adjusted
+    Frequency:  Quarterly 
+    """,
+    """
+    SPCS10RSA
+    S&P/Case-Shiller 10-City Composite Home Price Index 
+    Source: S&P Dow Jones Indices LLC  
+    Release: S&P/Case-Shiller Home Price Indices  
+    Units:  Index Jan 2000=100, Seasonally Adjusted
+    Frequency:  Monthly 
+    """,
+    """
+    CSUSHPISA
+    S&P/Case-Shiller U.S. National Home Price Index
+    Source: S&P Dow Jones Indices LLC  
+    Release: S&P/Case-Shiller Home Price Indices  
+    Units:  Index Jan 2000=100, Seasonally Adjusted
+    Frequency:  Monthly  
+    """,
+    """
+    CPILFESL 
     Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average
     Source: U.S. Bureau of Labor Statistics  
     Release: Consumer Price Index  
