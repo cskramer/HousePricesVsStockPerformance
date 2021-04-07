@@ -122,6 +122,7 @@ fred_descriptions = (
     """,
 )
 
+
 def main():
     global FRED_DIR
     global fred_filenames
@@ -132,9 +133,9 @@ def main():
         df = df.set_index("DATE")
         dframes.append(df)
 
-    i=0
+    i = 0
     while i < len(dframes):
-        print("*"*120)
+        print("*" * 120)
         print(fred_descriptions[i], end="")
         print(fred_urls[i])
         print("")
@@ -142,10 +143,12 @@ def main():
         print("")
         print(dframes[i].describe())
         print("")
-        print("Number of Columns: ",  len(dframes[i]. columns))
+        print("Number of Columns: ", len(dframes[i].columns))
         print("Are any values Missing: ", bool(dframes[i].isnull().any()[0]))
-        #print("Unique Values: ", dframes[i].iloc[,:0].unique())
+        # print("Unique Values: ", dframes[i].iloc[,:0].unique())
         print("Check the Types: ", dframes[i].dtypes)
         i = i + 1
+
+
 if __name__ == "__main__":
     main()
