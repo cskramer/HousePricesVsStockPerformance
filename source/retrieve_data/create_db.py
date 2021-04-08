@@ -49,6 +49,7 @@ def main():
         "RSAHORUSQ156S.csv",
         "SPCS10RSA.csv",
         "CSUSHPISA.csv",
+        "CPILFESL.csv",
     )
 
     dframes = []

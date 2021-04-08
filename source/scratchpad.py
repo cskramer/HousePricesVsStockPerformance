@@ -21,3 +21,9 @@ complete_fred_data = pd.concat(
     levels=None,
     names=None,
 )
++# R Values and Rule of Thumb Meanings
++# 0.00-0.19: very weak
++# 0.20-0.39: weak
++# 0.40-0.59: moderate
++# 0.60-0.79: strong
++# 0.80-1.00: very strong.
