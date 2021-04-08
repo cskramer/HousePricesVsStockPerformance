@@ -12,10 +12,10 @@ import util
 
 
 def get_norm_cse10_data():
-    '''
+    """
     Load Case Shiller 10 City Data from CSV File
     :return: normalized Pandas Dataframe
-    '''
+    """
     fred_dir = "fred_data"
     case_shiller_10_city_file = os.path.join(fred_dir, "SPCS10RSA.csv")
     case_shiller_10_city_frame = util.load_data(case_shiller_10_city_file)

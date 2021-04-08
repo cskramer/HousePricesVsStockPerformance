@@ -96,6 +96,9 @@ def main():
     complete_df.to_sql("all_data", con, if_exists="replace", index=True)
     con.commit()
     con.close()
+    CSV_NAME = "alldata.csv"
+    full_csv = os.path.join(DB_DIR, CSV_NAME)
+    complete_df.to_csv(full_csv, index=True)
 
 
 if __name__ == "__main__":
