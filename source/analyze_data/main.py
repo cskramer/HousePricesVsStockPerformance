@@ -64,6 +64,9 @@ def main():
     bubble_df = ndf.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END]
     post_bubble_df = ndf.loc[SPCS_BUBBLE_END:]
     
+    util.generate_scatterplot("NASDAQ", ndf, "IXIC_ADJCLOSE", "SPCS10RSA" )
+    util.generate_scatterplot("SP500", ndf, "GSPC_ADJCLOSE", "SPCS10RSA" )
+    util.generate_scatterplot("DJIA", ndf, "DJI_ADJCLOSE", "SPCS10RSA" )
     # slicing on an index 
     # mask = np.tril(np.ones_like(corr, dtype=bool))
     # cmap = sns.color_palette("Blues", as_cmap=True)

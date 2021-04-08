@@ -59,7 +59,7 @@ def normalize_dataframe(data_frame, column):
     return df_sklearn
 
 
-def generate_scatterplot(index_name, index_frame, housing_frame):
+def generate_scatterplot(index_name, df, ycol_name, xcol_name ):
     """ A function used to generate a scatterplot for housing prices/index data
             In:
                 indexName
@@ -68,12 +68,6 @@ def generate_scatterplot(index_name, index_frame, housing_frame):
             Out:
                 plot
     """
-    plotting_data = pd.merge(
-        index_frame[["DATE", "Adj Close"]],
-        housing_frame[["DATE", "SPCS10RSA"]],
-        how="outer",
-        on="DATE",
-    )
 
     scatter_chart = plt.figure(figsize=(5, 5))
     ax_scat = scatter_chart.add_subplot(1, 1, 1)
@@ -81,12 +75,11 @@ def generate_scatterplot(index_name, index_frame, housing_frame):
     ax_scat.set_title(index_name + " Close vs. Case Shiller 10 City Composite")
     ax_scat.set_xlabel(index_name + " NASDAQ Close ($)")
     ax_scat.set_ylabel("Case Shiller 10 City Composite (Index)")
-    plotting_data = plotting_data.sort_values("SPCS10RSA", ascending=True)
-    plt.scatter(plotting_data["Adj Close"], plotting_data["SPCS10RSA"])
+    plt.scatter(df[ycol_name], df[xcol_name])
     plt.show()
 
     sns.set_theme(color_codes=True)
-    sns.regplot(plotting_data["Adj Close"], plotting_data["SPCS10RSA"])
+    sns.regplot(df[ycol_name], df[xcol_name])
     
 def generate_lineplot(indexName, indexFrame, housingFrame):
     """ A function to generate line plots for normalized housing prices/index data
