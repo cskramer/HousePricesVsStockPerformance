@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\source\analyze_data\main.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\util.py">
           <value>
             <Attribute>

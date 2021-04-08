@@ -8,6 +8,7 @@ Created on Wed Mar 31 18:56:57 2021
 """
 
 import pandas as pd
+import matplotlib.pyplot as plt
 import load_fred_data
 import load_index_data
 import util
@@ -57,12 +58,23 @@ def main():
 
     ndf = load_data()
     corr = ndf.corr()
+    print("Correlation of Indices to Home Values")
+    print(corr)
 
     SPCS10RSA_BEGIN_DATE = "1987-01-01"
     DJII_BEGIN_DATE = "1992-02-01"
     END_DATE = "2021-01-01"
     SPCS_BUBBLE_BEGIN = "1997-08-01"
     SPCS_BUBBLE_END = "2009-01-01"
+
+    nndf = util.normalize_columns(ndf, ndf.columns)
+    nndf_plot = nndf.plot()
+    nndf_plot.axvline(x=SPCS_BUBBLE_BEGIN)
+    nndf_plot.axvline(x=SPCS_BUBBLE_END)
+    nndf_plot.set_title("Stock Market Indicies and the Housing Bubble")
+    nndf_plot.set_ylabel("Normalized Values")
+    nndf_plot.legend(loc="lower right")
+    plt.show()
 
     pre_bubble_df = ndf.loc[:SPCS_BUBBLE_BEGIN]
     bubble_df = ndf.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END]
@@ -71,7 +83,7 @@ def main():
     util.generate_scatterplot("NASDAQ", ndf, "IXIC_ADJCLOSE", "SPCS10RSA")
     util.generate_scatterplot("SP500", ndf, "GSPC_ADJCLOSE", "SPCS10RSA")
     util.generate_scatterplot("DJIA", ndf, "DJI_ADJCLOSE", "SPCS10RSA")
-    # slicing on an index
+
     # mask = np.tril(np.ones_like(corr, dtype=bool))
     # cmap = sns.color_palette("Blues", as_cmap=True)
     # util.generate_heatmap(mask, cmap, corr)
