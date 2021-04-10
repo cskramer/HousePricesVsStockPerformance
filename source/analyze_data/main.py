@@ -47,7 +47,7 @@ def main():
     nndf = util.normalize_columns(ndf, ndf.columns)
     corr = nndf.corr()
 
-    correlation_data_fname = os.path.join(output_dir, "AllCorrelationData.txt")
+    correlation_data_fname = os.path.join(output_dir, "AllCorrelationData.csv")
     heat_map_fname = os.path.join(output_dir, "AllCorrelationHeatmap.png")
     ts_fname = os.path.join(output_dir, "AllDataNormalizedLineGraph.png")
 
@@ -57,6 +57,8 @@ def main():
     print(" ")
     print("Correlation of Indices to Home Values:")
     print(corr)
+    print(" ")
+    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(mask, cmap, corr)
@@ -77,7 +79,7 @@ def main():
     pre_bubble_df = ndf.loc[:SPCS_BUBBLE_BEGIN]
     corr = pre_bubble_df.corr()
 
-    correlation_data_fname = os.path.join(output_dir, "PreBubbleCorrelationData.txt")
+    correlation_data_fname = os.path.join(output_dir, "PreBubbleCorrelationData.csv")
     heat_map_fname = os.path.join(output_dir, "PreBubbleCorrelationHeatmap.png")
     ts_fname = os.path.join(output_dir, "PreBubbleNormalizedLineGraph.png")
 
@@ -90,6 +92,7 @@ def main():
     print(" ")
     print(corr)
     print(" ")
+    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(mask, cmap, corr)
@@ -109,7 +112,7 @@ def main():
     bubble_df = ndf.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END]
     corr = bubble_df.corr()
 
-    correlation_data_fname = os.path.join(output_dir, "DuringBubbleCorrelationData.txt")
+    correlation_data_fname = os.path.join(output_dir, "DuringBubbleCorrelationData.csv")
     heat_map_fname = os.path.join(output_dir, "DuringBubbleCorrelationHeatmap.png")
     ts_fname = os.path.join(output_dir, "DuringBubbleNormalizedLineGraph.png")
 
@@ -121,6 +124,8 @@ def main():
     print("Correlation of Indices to Home Values during bubble:")
     print(" ")
     print(corr)
+    print(" ")
+    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(mask, cmap, corr)
@@ -140,7 +145,7 @@ def main():
     post_bubble_df = ndf.loc[SPCS_BUBBLE_END:]
     corr = post_bubble_df.corr()
 
-    correlation_data_fname = os.path.join(output_dir, "PostBubbleCorrelationData.txt")
+    correlation_data_fname = os.path.join(output_dir, "PostBubbleCorrelationData.csv")
     heat_map_fname = os.path.join(output_dir, "PostBubbleCorrelationHeatmap.png")
     ts_fname = os.path.join(output_dir, "PostBubbleNormalizedLineGraph.png")
 
@@ -152,6 +157,8 @@ def main():
     print("Correlation of Indices to Home Values during bubble:")
     print(" ")
     print(corr)
+    print(" ")
+    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(mask, cmap, corr)
