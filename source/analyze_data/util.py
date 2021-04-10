@@ -73,7 +73,7 @@ def generate_ts_plot(df, beg_line, end_line, p_ylabel, p_title):
                 plot
     """
 
-    df_plot = df.plot(figsize=(7, 5))
+    df_plot = df.plot(figsize=(8, 5))
 
     if beg_line is not None:
         df_plot.axvline(x=beg_line)
@@ -83,7 +83,7 @@ def generate_ts_plot(df, beg_line, end_line, p_ylabel, p_title):
     df_plot.set_title(p_title)
     df_plot.set_ylabel(p_ylabel)
     df_plot.legend(loc="lower right")
-    plt.show()
+    return df_plot.get_figure()
 
 
 def generate_norm_scatterplot(df, ycol_name, xcol_name, p_xlabel, p_ylabel, p_title):
@@ -154,8 +154,8 @@ def generate_heatmap(mask, cmap, corr):
     """
 
     f, ax = plt.subplots(figsize=(7, 7))
-    ax.set_yticks(ax.get_yticks().tolist()) #Shutup a UserWarning from set_yticklabels
-    ax.set_yticklabels(labels=ax.get_yticklabels(), va='center')
+    ax.set_yticks(ax.get_yticks().tolist())  # Shutup a UserWarning from set_yticklabels
+    ax.set_yticklabels(labels=ax.get_yticklabels(), va="center")
     sns.heatmap(
         corr,
         cmap=cmap,
@@ -164,9 +164,11 @@ def generate_heatmap(mask, cmap, corr):
         linecolor="grey",
         cbar=False,
         annot=True,
-        ax = ax,
-        mask=mask
+        ax=ax,
+        mask=mask,
     )
+    return f
+
 
 def load_all_data_from_sql():
     """

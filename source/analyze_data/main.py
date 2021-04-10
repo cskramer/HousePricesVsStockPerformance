@@ -6,6 +6,8 @@ Created on Wed Mar 31 18:56:57 2021
 
 @authors: Shane Kramer and Ted Brown
 """
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -30,6 +32,8 @@ def main():
     :return:
     :rtype:
     """
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    output_dir = os.path.abspath(os.path.join(script_dir, "..", "..", "output"))
 
     ndf = load_data()
 
@@ -43,6 +47,10 @@ def main():
     nndf = util.normalize_columns(ndf, ndf.columns)
     corr = nndf.corr()
 
+    correlation_data_fname = os.path.join(output_dir, "AllCorrelationData.txt")
+    heat_map_fname = os.path.join(output_dir, "AllCorrelationHeatmap.png")
+    ts_fname = os.path.join(output_dir, "AllDataNormalizedLineGraph.png")
+
     print("----------------------------------------------------------------")
     print(" ====== Analyzing all indices vs. housing from 1992-2021 =======")
     print("----------------------------------------------------------------")
@@ -51,21 +59,27 @@ def main():
     print(corr)
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig.savefig(heat_map_fname, format="png")
 
     # Analyze all indices vs. housing from 1992-2021
-    util.generate_ts_plot(
+    ts_fig = util.generate_ts_plot(
         nndf,
         SPCS_BUBBLE_BEGIN,
         SPCS_BUBBLE_END,
         "Normalized Values",
         "Stock Market Indicies and the Housing Bubble " "(1992.02.01-2021.02.01)",
     )
+    ts_fig.savefig(ts_fname, format="png")
 
     # Analyze all indices vs. housing from 1992-1997
     # =============================================================
     pre_bubble_df = ndf.loc[:SPCS_BUBBLE_BEGIN]
     corr = pre_bubble_df.corr()
+
+    correlation_data_fname = os.path.join(output_dir, "PreBubbleCorrelationData.txt")
+    heat_map_fname = os.path.join(output_dir, "PreBubbleCorrelationHeatmap.png")
+    ts_fname = os.path.join(output_dir, "PreBubbleNormalizedLineGraph.png")
 
     print(" ")
     print("----------------------------------------------------------------")
@@ -78,9 +92,10 @@ def main():
     print(" ")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig.savefig(heat_map_fname, format="png")
 
-    util.generate_ts_plot(
+    ts_fig = util.generate_ts_plot(
         pre_bubble_df,
         None,
         None,
@@ -88,10 +103,15 @@ def main():
         "Pre-Bubble Stock Market Indicies vs. Case Shiller "
         "10 City (1992.02.01-1997.08.01)",
     )
+    ts_fig.savefig(ts_fname, format="png")
 
     # Analyze all indices vs. housing from 1997-2009
     bubble_df = ndf.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END]
     corr = bubble_df.corr()
+
+    correlation_data_fname = os.path.join(output_dir, "DuringBubbleCorrelationData.txt")
+    heat_map_fname = os.path.join(output_dir, "DuringBubbleCorrelationHeatmap.png")
+    ts_fname = os.path.join(output_dir, "DuringBubbleNormalizedLineGraph.png")
 
     print(" ")
     print("----------------------------------------------------------------")
@@ -103,9 +123,10 @@ def main():
     print(corr)
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig.savefig(heat_map_fname, format="png")
 
-    util.generate_ts_plot(
+    ts_fig = util.generate_ts_plot(
         bubble_df,
         None,
         None,
@@ -113,10 +134,15 @@ def main():
         "Bubble Stock Market Indicies vs. Case Shiller 10 "
         "City (1997.08.01-2009.01.01)",
     )
+    ts_fig.savefig(ts_fname, format="png")
 
     # Analyze all indices vs. housing from 2009-2021
     post_bubble_df = ndf.loc[SPCS_BUBBLE_END:]
     corr = post_bubble_df.corr()
+
+    correlation_data_fname = os.path.join(output_dir, "PostBubbleCorrelationData.txt")
+    heat_map_fname = os.path.join(output_dir, "PostBubbleCorrelationHeatmap.png")
+    ts_fname = os.path.join(output_dir, "PostBubbleNormalizedLineGraph.png")
 
     print(" ")
     print("----------------------------------------------------------------")
@@ -128,9 +154,10 @@ def main():
     print(corr)
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig.savefig(heat_map_fname, format="png")
 
-    util.generate_ts_plot(
+    ts_fig = util.generate_ts_plot(
         post_bubble_df,
         None,
         None,
@@ -138,6 +165,7 @@ def main():
         "Post-Bubble Stock Market Indicies vs. Case Shiller "
         "10 City (2009.01.01-2021.01.01)",
     )
+    ts_fig.savefig(ts_fname, format="png")
 
     # Scatterplots ...
     # Scatterplot Nasdaq vs. Case Shiller 1992-2021
