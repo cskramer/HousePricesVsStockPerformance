@@ -180,7 +180,8 @@ def load_all_data_from_sql():
     :return: copy of a single pandas dataframe with all information for this project indexed and sorted by date
     :rtype: pandas dataframe
     """
-    DB_DIR = "../../data/db"
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    DB_DIR = os.path.abspath(os.path.join(script_dir, "..", "..", "data", "db"))
     DB_NAME = "alldata.db"
     con = sqlite3.connect(os.path.join(DB_DIR, DB_NAME))
     df = pd.read_sql(
