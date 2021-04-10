@@ -1,0 +1,7 @@
+Correlation of Indices to Home Values during bubble:
+ 
+               IXIC_ADJCLOSE  DJI_ADJCLOSE  GSPC_ADJCLOSE  SPCS10RSA
+IXIC_ADJCLOSE       1.000000      0.548475       0.819264  -0.055495
+DJI_ADJCLOSE        0.548475      1.000000       0.877798   0.607188
+GSPC_ADJCLOSE       0.819264      0.877798       1.000000   0.279355
+SPCS10RSA          -0.055495      0.607188       0.279355   1.000000
