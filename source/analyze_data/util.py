@@ -99,15 +99,14 @@ def generate_norm_scatterplot(df, ycol_name, xcol_name, p_xlabel, p_ylabel, p_ti
             Out:
                 plot
     """
-
-    scatter_chart = plt.figure(figsize=(5, 5))
-
+    f, ax = plt.subplots(figsize=(7, 5))
     #   #sns.set_theme(color_codes=True)
     ax_sb_scat = sns.regplot(df[ycol_name], df[xcol_name])
     ax_sb_scat.set(xlabel=p_xlabel, ylabel=p_ylabel)
     ax_sb_scat.set(title=p_title)
     ax_sb_scat.set(xlim=(0, 1.0))
     ax_sb_scat.set(ylim=(0, 1.0))
+    return ax_sb_scat.get_figure()
 
 
 def generate_lineplot(indexName, indexFrame, housingFrame):

@@ -169,7 +169,8 @@ def main():
 
     # Scatterplots ...
     # Scatterplot Nasdaq vs. Case Shiller 1992-2021
-    util.generate_norm_scatterplot(
+    scat_plot_fname = os.path.join(output_dir, "NasdaqVsCaseShillerScatterplot.png")
+    scat_fig = util.generate_norm_scatterplot(
         ndf,
         "IXIC_ADJCLOSE",
         "SPCS10RSA",
@@ -178,9 +179,11 @@ def main():
         "Nasdaq vs. Case Shiller 10 City "
         "Composite (normalized - 1992.02.01-2021.01.01)",
     )
+    scat_fig.savefig(scat_plot_fname, format="png")
 
     # Scatterplot S&P500 vs. Case Shiller 1992-2021
-    util.generate_norm_scatterplot(
+    scat_plot_fname = os.path.join(output_dir, "SP500VsCaseShillerScatterplot.png")
+    scat_fig = util.generate_norm_scatterplot(
         ndf,
         "GSPC_ADJCLOSE",
         "SPCS10RSA",
@@ -189,9 +192,11 @@ def main():
         "S&P500 vs. Case Shiller 10 City "
         "Composite (normalized - 1992.02.01-2021.01.01)",
     )
+    scat_fig.savefig(scat_plot_fname, format="png")
 
     # Scatterplot DJII vs. Case Shiller 1992-2021
-    util.generate_norm_scatterplot(
+    scat_plot_fname = os.path.join(output_dir, "DJIIVsCaseShillerScatterplot.png")
+    scat_fig = util.generate_norm_scatterplot(
         ndf,
         "DJI_ADJCLOSE",
         "SPCS10RSA",
@@ -200,6 +205,7 @@ def main():
         "DJII vs. Case Shiller 10 City "
         "Composite (normalized - 1992.02.01-2021.01.01)",
     )
+    scat_fig.savefig(scat_plot_fname, format="png")
 
 
 if __name__ == "__main__":
