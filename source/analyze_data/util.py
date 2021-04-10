@@ -101,12 +101,12 @@ def generate_norm_scatterplot(df, ycol_name, xcol_name, p_xlabel, p_ylabel, p_ti
     """
     f, ax = plt.subplots(figsize=(7, 5))
     #   #sns.set_theme(color_codes=True)
-    ax_sb_scat = sns.regplot(df[ycol_name], df[xcol_name])
+    ax_sb_scat = sns.regplot(df[ycol_name], df[xcol_name], ax=ax)
     ax_sb_scat.set(xlabel=p_xlabel, ylabel=p_ylabel)
     ax_sb_scat.set(title=p_title)
     ax_sb_scat.set(xlim=(0, 1.0))
     ax_sb_scat.set(ylim=(0, 1.0))
-    return ax_sb_scat.get_figure()
+    return f
 
 
 def generate_lineplot(indexName, indexFrame, housingFrame):
@@ -142,7 +142,7 @@ def generate_lineplot(indexName, indexFrame, housingFrame):
     # plt.show()
 
 
-def generate_heatmap(mask, cmap, corr):
+def generate_heatmap(mask, cmap, corr, title):
     """ A function to generate a heatmap of housing and index
         data correlation values
         In:
@@ -152,9 +152,10 @@ def generate_heatmap(mask, cmap, corr):
             heatmap plot
     """
 
-    f, ax = plt.subplots(figsize=(7, 7))
-    ax.set_yticks(ax.get_yticks().tolist())  # Shutup a UserWarning from set_yticklabels
+    f, ax = plt.subplots(figsize=(7.5, 7.5)) # Enlarge to show missing parts of graph
+    ax.set_yticks(ax.get_yticks().tolist())  # Shut-up a UserWarning from set_yticklabels
     ax.set_yticklabels(labels=ax.get_yticklabels(), va="center")
+    ax.set_title(title)
     sns.heatmap(
         corr,
         cmap=cmap,

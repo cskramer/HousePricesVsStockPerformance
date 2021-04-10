@@ -61,7 +61,7 @@ def main():
     corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr, "Correlations For Stock Market Indicies and Case Shiller Index\n(1992.02.01-2021.02.01)")
     heat_fig.savefig(heat_map_fname, format="png")
 
     # Analyze all indices vs. housing from 1992-2021
@@ -95,7 +95,7 @@ def main():
     corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr, "Pre-Bubble Correlations For Stock Market Indicies and Case Shiller Index")
     heat_fig.savefig(heat_map_fname, format="png")
 
     ts_fig = util.generate_ts_plot(
@@ -128,7 +128,7 @@ def main():
     corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr, "Bubble Correlations For Stock Market Indicies and Case Shiller Index")
     heat_fig.savefig(heat_map_fname, format="png")
 
     ts_fig = util.generate_ts_plot(
@@ -161,7 +161,7 @@ def main():
     corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
-    heat_fig = util.generate_heatmap(mask, cmap, corr)
+    heat_fig = util.generate_heatmap(mask, cmap, corr, "Post-Bubble Correlations For Stock Market Indicies and Case Shiller Index")
     heat_fig.savefig(heat_map_fname, format="png")
 
     ts_fig = util.generate_ts_plot(
