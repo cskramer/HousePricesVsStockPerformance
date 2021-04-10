@@ -118,6 +118,7 @@ def main():
         "Normalized Values",
         "Pre-Bubble Stock Market Indicies vs. Case Shiller "
         "10 City (1992.02.01-1997.08.01)",
+        legend_loc="upper left",
     )
     ts_fig.savefig(ts_fname, format="png")
 
@@ -158,6 +159,7 @@ def main():
         "Normalized Values",
         "Bubble Stock Market Indicies vs. Case Shiller 10 "
         "City (1997.08.01-2009.01.01)",
+        legend_loc="upper left",
     )
     ts_fig.savefig(ts_fname, format="png")
 
