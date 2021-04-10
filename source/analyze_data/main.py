@@ -58,7 +58,9 @@ def main():
     print("Correlation of Indices to Home Values:")
     print(corr)
     print(" ")
-    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
+    corr.to_csv(
+        correlation_data_fname, header=True, encoding="utf-8", line_terminator="\n"
+    )
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(
@@ -97,7 +99,9 @@ def main():
     print(" ")
     print(corr)
     print(" ")
-    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
+    corr.to_csv(
+        correlation_data_fname, header=True, encoding="utf-8", line_terminator="\n"
+    )
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(
@@ -135,7 +139,9 @@ def main():
     print(" ")
     print(corr)
     print(" ")
-    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
+    corr.to_csv(
+        correlation_data_fname, header=True, encoding="utf-8", line_terminator="\n"
+    )
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(
@@ -173,7 +179,9 @@ def main():
     print(" ")
     print(corr)
     print(" ")
-    corr.to_csv(correlation_data_fname, header=True, encoding="utf-8")
+    corr.to_csv(
+        correlation_data_fname, header=True, encoding="utf-8", line_terminator="\n"
+    )
 
     mask = np.tril(np.ones_like(corr, dtype=bool))
     heat_fig = util.generate_heatmap(
