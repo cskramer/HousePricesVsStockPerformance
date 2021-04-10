@@ -13,8 +13,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-import load_fred_data
-import load_index_data
 import util
 
 
