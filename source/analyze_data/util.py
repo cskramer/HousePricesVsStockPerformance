@@ -71,14 +71,14 @@ def generate_ts_plot(df, beg_line, end_line, p_ylabel, p_title):
             Out:
                 plot
     """
-    
+
     df_plot = df.plot()
-    
+
     if beg_line is not None:
         df_plot.axvline(x=beg_line)
     if end_line is not None:
         df_plot.axvline(x=end_line)
-    
+
     df_plot.set_title(p_title)
     df_plot.set_ylabel(p_ylabel)
     df_plot.legend(loc="lower right")
@@ -100,14 +100,13 @@ def generate_norm_scatterplot(df, ycol_name, xcol_name, p_xlabel, p_ylabel, p_ti
     """
 
     scatter_chart = plt.figure(figsize=(5, 5))
-    
-#   #sns.set_theme(color_codes=True)
+
+    #   #sns.set_theme(color_codes=True)
     ax_sb_scat = sns.regplot(df[ycol_name], df[xcol_name])
-    ax_sb_scat.set(xlabel=p_xlabel,
-                   ylabel=p_ylabel)
+    ax_sb_scat.set(xlabel=p_xlabel, ylabel=p_ylabel)
     ax_sb_scat.set(title=p_title)
-    ax_sb_scat.set(xlim=(0,1.0))
-    ax_sb_scat.set(ylim=(0,1.0))
+    ax_sb_scat.set(xlim=(0, 1.0))
+    ax_sb_scat.set(ylim=(0, 1.0))
 
 
 def generate_lineplot(indexName, indexFrame, housingFrame):
@@ -154,8 +153,13 @@ def generate_heatmap(mask, cmap, corr):
     """
     ax = plt.subplots(figsize=(5, 5))
     sns.heatmap(
-        corr, cmap=cmap, square=True, linewidths=0.3, linecolor='grey', 
-        cbar=True, annot=True
+        corr,
+        cmap=cmap,
+        square=True,
+        linewidths=0.3,
+        linecolor="grey",
+        cbar=True,
+        annot=True,
     )
 
 
