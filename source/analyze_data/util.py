@@ -164,9 +164,9 @@ def generate_heatmap(mask, cmap, corr):
         linecolor="grey",
         cbar=False,
         annot=True,
+        ax = ax,
         mask=mask
     )
-
 
 def load_all_data_from_sql():
     """
