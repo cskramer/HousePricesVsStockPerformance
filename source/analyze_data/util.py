@@ -59,27 +59,55 @@ def normalize_dataframe(data_frame, column):
     return df_sklearn
 
 
-def generate_scatterplot(index_name, df, ycol_name, xcol_name):
+def generate_ts_plot(df, beg_line, end_line, p_ylabel, p_title):
     """ A function used to generate a scatterplot for housing prices/index data
             In:
-                indexName
-                indexFrame
-                housingFrame
+                dataframe
+                beg_line - Marker for beginning of period of interest
+                end_line - Marker for end of period of interest
+                ylabel
+                title
+                                
+            Out:
+                plot
+    """
+    
+    df_plot = df.plot()
+    
+    if beg_line is not None:
+        df_plot.axvline(x=beg_line)
+    if end_line is not None:
+        df_plot.axvline(x=end_line)
+    
+    df_plot.set_title(p_title)
+    df_plot.set_ylabel(p_ylabel)
+    df_plot.legend(loc="lower right")
+    plt.show()
+
+
+def generate_norm_scatterplot(df, ycol_name, xcol_name, p_xlabel, p_ylabel, p_title):
+    """ A function used to generate a scatterplot for housing prices/index data
+            In:
+                dataframe
+                ycol_name
+                xcol_name
+                xlabel
+                ylabel
+                title
+                                
             Out:
                 plot
     """
 
     scatter_chart = plt.figure(figsize=(5, 5))
-    ax_scat = scatter_chart.add_subplot(1, 1, 1)
-
-    ax_scat.set_title(index_name + " Close vs. Case Shiller 10 City Composite")
-    ax_scat.set_xlabel(index_name + " NASDAQ Close ($)")
-    ax_scat.set_ylabel("Case Shiller 10 City Composite (Index)")
-    plt.scatter(df[ycol_name], df[xcol_name])
-    plt.show()
-
-    sns.set_theme(color_codes=True)
-    sns.regplot(df[ycol_name], df[xcol_name])
+    
+#   #sns.set_theme(color_codes=True)
+    ax_sb_scat = sns.regplot(df[ycol_name], df[xcol_name])
+    ax_sb_scat.set(xlabel=p_xlabel,
+                   ylabel=p_ylabel)
+    ax_sb_scat.set(title=p_title)
+    ax_sb_scat.set(xlim=(0,1.0))
+    ax_sb_scat.set(ylim=(0,1.0))
 
 
 def generate_lineplot(indexName, indexFrame, housingFrame):
@@ -124,9 +152,10 @@ def generate_heatmap(mask, cmap, corr):
         Out:
             heatmap plot
     """
-    f, ax = plt.subplots(figsize=(15, 15))
+    ax = plt.subplots(figsize=(5, 5))
     sns.heatmap(
-        corr, mask=mask, cmap=cmap, square=True, linewidths=0.5, cbar=False, annot=True
+        corr, cmap=cmap, square=True, linewidths=0.3, linecolor='grey', 
+        cbar=True, annot=True
     )
 
 
