@@ -16,7 +16,7 @@ import seaborn as sns
 import util
 
 
-def load_data():
+def load_normalized_data():
     df = util.load_all_data_from_sql()
     ndf = df[["IXIC_ADJCLOSE", "DJI_ADJCLOSE", "GSPC_ADJCLOSE", "SPCS10RSA"]].dropna()
     ndf = util.normalize_columns(ndf, ndf.columns)
@@ -33,7 +33,8 @@ def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     output_dir = os.path.abspath(os.path.join(script_dir, "..", "..", "output"))
 
-    ndf = load_data()
+    raw_df = util.load_all_data_from_sql()
+    ndf = load_normalized_data()
 
     SPCS_BUBBLE_BEGIN = "1997-08-01"
     SPCS_BUBBLE_END = "2009-01-01"
@@ -201,7 +202,7 @@ def main():
     ts_fig.savefig(ts_fname, format="png")
 
     # Scatterplots ...
-    # Scatterplot Nasdaq vs. Case Shiller 1992-2021
+    # ################       Scatterplot Nasdaq vs. Case Shiller 1992-2021          ################
     scat_plot_fname = os.path.join(output_dir, "NasdaqVsCaseShillerScatterplot.png")
     scat_fig = util.generate_norm_scatterplot(
         ndf,
@@ -237,6 +238,150 @@ def main():
         "Case Shiller 10 City Composite (Index)",
         "DJII vs. Case Shiller 10 City "
         "Composite (normalized - 1992.02.01-2021.01.01)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # ################       Scatterplot Nasdaq vs. Case Shiller Pre-Bubble          ################
+    scat_plot_fname = os.path.join(
+        output_dir, "NasdaqVsCaseShillerScatterplot_PreBubble.png"
+    )
+    pre_bubble_normalized = util.normalize_columns(
+        raw_df.loc[:SPCS_BUBBLE_BEGIN], raw_df.columns
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        pre_bubble_normalized,
+        "IXIC_ADJCLOSE",
+        "SPCS10RSA",
+        "Nasdaq Close",
+        "Case Shiller 10 City Composite (Index)",
+        "Nasdaq vs. Case Shiller 10 City "
+        "Composite (normalized - Before Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot S&P500 vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "SP500VsCaseShillerScatterplot_PreBubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        pre_bubble_normalized,
+        "GSPC_ADJCLOSE",
+        "SPCS10RSA",
+        "S&P500 Close",
+        "Case Shiller 10 City Composite (Index)",
+        "S&P500 vs. Case Shiller 10 City "
+        "Composite (normalized - Before Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot DJII vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "DJIIVsCaseShillerScatterplot_Bubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        pre_bubble_normalized,
+        "DJI_ADJCLOSE",
+        "SPCS10RSA",
+        "DJII Close",
+        "Case Shiller 10 City Composite (Index)",
+        "DJII vs. Case Shiller 10 City "
+        "Composite (normalized - During Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # ################       Scatterplot Nasdaq vs. Case Shiller Bubble          ################
+    scat_plot_fname = os.path.join(
+        output_dir, "NasdaqVsCaseShillerScatterplot_Bubble.png"
+    )
+    bubble_normalized = util.normalize_columns(
+        raw_df.loc[SPCS_BUBBLE_BEGIN:SPCS_BUBBLE_END], raw_df.columns
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        bubble_normalized,
+        "IXIC_ADJCLOSE",
+        "SPCS10RSA",
+        "Nasdaq Close",
+        "Case Shiller 10 City Composite (Index)",
+        "Nasdaq vs. Case Shiller 10 City "
+        "Composite (normalized - During Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot S&P500 vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "SP500VsCaseShillerScatterplot_Bubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        bubble_normalized,
+        "GSPC_ADJCLOSE",
+        "SPCS10RSA",
+        "S&P500 Close",
+        "Case Shiller 10 City Composite (Index)",
+        "S&P500 vs. Case Shiller 10 City "
+        "Composite (normalized - During Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot DJII vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "DJIIVsCaseShillerScatterplot_Bubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        bubble_normalized,
+        "DJI_ADJCLOSE",
+        "SPCS10RSA",
+        "DJII Close",
+        "Case Shiller 10 City Composite (Index)",
+        "DJII vs. Case Shiller 10 City "
+        "Composite (normalized - During Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # ################       Scatterplot Nasdaq vs. Case Shiller PostBubble          ################
+    scat_plot_fname = os.path.join(
+        output_dir, "NasdaqVsCaseShillerScatterplot_PostBubble.png"
+    )
+    post_bubble_normalized = util.normalize_columns(
+        raw_df.loc[SPCS_BUBBLE_END:], raw_df.columns
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        post_bubble_normalized,
+        "IXIC_ADJCLOSE",
+        "SPCS10RSA",
+        "Nasdaq Close",
+        "Case Shiller 10 City Composite (Index)",
+        "Nasdaq vs. Case Shiller 10 City "
+        "Composite (normalized - After Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot S&P500 vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "SP500VsCaseShillerScatterplot_PostBubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        post_bubble_normalized,
+        "GSPC_ADJCLOSE",
+        "SPCS10RSA",
+        "S&P500 Close",
+        "Case Shiller 10 City Composite (Index)",
+        "S&P500 vs. Case Shiller 10 City "
+        "Composite (normalized - After Housing Bubble)",
+    )
+    scat_fig.savefig(scat_plot_fname, format="png")
+
+    # Scatterplot DJII vs. Case Shiller 1992-2021
+    scat_plot_fname = os.path.join(
+        output_dir, "DJIIVsCaseShillerScatterplot_PostBubble.png"
+    )
+    scat_fig = util.generate_norm_scatterplot(
+        post_bubble_normalized,
+        "DJI_ADJCLOSE",
+        "SPCS10RSA",
+        "DJII Close",
+        "Case Shiller 10 City Composite (Index)",
+        "DJII vs. Case Shiller 10 City "
+        "Composite (normalized - After Housing Bubble)",
     )
     scat_fig.savefig(scat_plot_fname, format="png")
 
