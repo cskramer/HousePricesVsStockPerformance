@@ -8,6 +8,7 @@ Created on Wed Mar 31 20:20:10 2021
 """
 import os
 import sqlite3
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -72,7 +73,7 @@ def generate_ts_plot(df, beg_line, end_line, p_ylabel, p_title):
                 plot
     """
 
-    df_plot = df.plot()
+    df_plot = df.plot(figsize=(7, 5))
 
     if beg_line is not None:
         df_plot.axvline(x=beg_line)
@@ -151,15 +152,19 @@ def generate_heatmap(mask, cmap, corr):
         Out:
             heatmap plot
     """
-    ax = plt.subplots(figsize=(5, 5))
+
+    f, ax = plt.subplots(figsize=(7, 7))
+    ax.set_yticks(ax.get_yticks().tolist()) #Shutup a UserWarning from set_yticklabels
+    ax.set_yticklabels(labels=ax.get_yticklabels(), va='center')
     sns.heatmap(
         corr,
         cmap=cmap,
         square=True,
         linewidths=0.3,
         linecolor="grey",
-        cbar=True,
+        cbar=False,
         annot=True,
+        mask=mask
     )
 
 
