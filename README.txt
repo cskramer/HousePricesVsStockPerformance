@@ -25,17 +25,28 @@ Instructions:
 		  To run: "python source/analyze_data/main.py"
 
 		  Results:
-			 Generates the following graphs:
+			 Generates the following output:
 				(Exploratory Phase)
-				Scatterplots for each of the 3 indexes against the housing data
-				Line plot for each of the three indexes against housing data (normalized)
-				R value heatmap for all 4 datasets
 				
+					1992.02.01 - 2021.01.01
+						text-based Correlation analysis
+						Correlation heatmap
+						Line Graph for all indices vs Case Shiller Data
+					
 				(Explanatory Phase)
-				Same set of graphs above, broken down by following date ranges:
-					1992-02-01 - 1997-08-01
-					1997-08-01 - 2009-01-01
-					2009-01-01 - 2021-01-01
-				
-			Text-based summary
-		
+					Pre-Bubble (1992.02.01 - 1997.08.01)
+						text-based Correlation analysis
+						Correlation heatmap
+						Line Graph for all indices vs Case Shiller Data
+					
+					During-Bubble (1997.08.01 - 2009.01.01)
+						text-based Correlation analysis
+						Correlation heatmap
+						Line Graph for all indices vs Case Shiller Data
+						
+					After-Bubble (2009.01.01 - 2021.01.01)
+						text-based Correlation analysis
+						Correlation heatmap
+						Line Graph for all indices vs Case Shiller Data
+					
+					Scatterplots for each of the 3 indexes against the housing data
