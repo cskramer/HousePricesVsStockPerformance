@@ -41,6 +41,31 @@ def main():
 
     cmap = sns.color_palette("vlag")
 
+    #
+    # Heatmap showing AJD_CLOSE is a reasonable equivalent to CLOSE
+    close_df = raw_df[
+        [
+            "IXIC_CLOSE",
+            "IXIC_ADJCLOSE",
+            "DJI_CLOSE",
+            "DJI_ADJCLOSE",
+            "GSPC_CLOSE",
+            "GSPC_ADJCLOSE",
+        ]
+    ]
+    norm_close_df = util.normalize_columns(close_df, close_df.columns)
+    close_corr = norm_close_df.corr()
+    heat_map_fname = os.path.join(output_dir, "IndexClosingHeatmaps.png")
+
+    mask = np.tril(np.ones_like(close_corr, dtype=bool))
+    heat_fig = util.generate_heatmap(
+        mask,
+        cmap,
+        close_corr,
+        "Correlations For Stock Market Indicies Close vs Adj. Close",
+    )
+    heat_fig.savefig(heat_map_fname, format="png")
+
     # Analyze all indices vs. housing from 1992-2021
     # =============================================================
     nndf = util.normalize_columns(ndf, ndf.columns)
