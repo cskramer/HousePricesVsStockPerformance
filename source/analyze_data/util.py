@@ -154,7 +154,7 @@ def generate_heatmap(mask, cmap, corr, title):
             heatmap plot
     """
 
-    f, ax = plt.subplots(figsize=(7.5, 7.5))  # Enlarge to show missing parts of graph
+    f, ax = plt.subplots(figsize=(8, 8))  # Enlarge to show missing parts of graph
     ax.set_yticks(
         ax.get_yticks().tolist()
     )  # Shut-up a UserWarning from set_yticklabels
