@@ -38,15 +38,16 @@ Instructions:
 						text-based Correlation analysis
 						Correlation heatmap
 						Line Graph for all indices vs Case Shiller Data
+						Scatterplot for each index vs housing data
 					
 					During-Bubble (1997.08.01 - 2009.01.01)
 						text-based Correlation analysis
 						Correlation heatmap
 						Line Graph for all indices vs Case Shiller Data
+						Scatterplot for each index vs housing data
 						
 					After-Bubble (2009.01.01 - 2021.01.01)
 						text-based Correlation analysis
 						Correlation heatmap
 						Line Graph for all indices vs Case Shiller Data
-					
-					Scatterplots for each of the 3 indexes against the housing data
+						Scatterplot for each index vs housing data
