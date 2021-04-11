@@ -126,9 +126,14 @@ fred_descriptions = (
 def main():
     global FRED_DIR
     global fred_filenames
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    fred_abs_path = os.path.abspath(
+        os.path.join(script_dir, "..", "..", "data", FRED_DIR)
+    )
+
     dframes = []
     for fname in fred_filenames:
-        df = pd.read_csv(os.path.join(FRED_DIR, fname), encoding="utf8")
+        df = pd.read_csv(os.path.join(fred_abs_path, fname), encoding="utf8")
         df.DATE = pd.to_datetime(df.DATE)
         df = df.set_index("DATE")
         dframes.append(df)
