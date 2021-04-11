@@ -37,9 +37,15 @@ index_descriptions = (
 def main():
     global INDEX_DIR
     global index_filenames
+
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    index_abs_path = os.path.abspath(
+        os.path.join(script_dir, "..", "..", "data", INDEX_DIR)
+    )
+
     dframes = []
     for fname in index_filenames:
-        df = pd.read_csv(os.path.join(INDEX_DIR, fname), encoding="utf8")
+        df = pd.read_csv(os.path.join(index_abs_path, fname), encoding="utf8")
         df = df.rename(columns={"Date": "DATE",})
         df.DATE = pd.to_datetime(df.DATE)
         df = df.set_index("DATE")
