@@ -1,7 +1,5 @@
 Project 2
 	W200 - Spring 2021
-	Ted Brown
-	Shane Kramer
 
 -------------------------------------------------
 Problem: 
