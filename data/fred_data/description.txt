@@ -9,3 +9,5 @@ CSUSHPISA.csv		S&P/Case-Shiller National Home Price Index
 UMCSENT.csv             Consumer Sentiment 
 RSAHORUSQ156S.csv       Home Ownership Rates 
 CPILFESL.csv            Consumer Price Index for All Urban Consumers: All Items Less Food & Energy
+CNP16OV.csv 		US Population Thousands of Persons, Not Seasonally Adjusted
+WPUIP2311001.csv	Producer Price Index by Commodity: Inputs to Industries: Net Inputs to Residential Construction, Goods
