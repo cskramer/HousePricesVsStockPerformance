@@ -15,6 +15,8 @@ fred_filenames = (
     "SPCS10RSA.csv",
     "CSUSHPISA.csv",
     "CPILFESL.csv",
+    "CNP16OV.csv",
+    "WPUIP2311001.csv",
 )
 fred_urls = (
     "",
@@ -29,6 +31,8 @@ fred_urls = (
     "https://fred.stlouisfed.org/series/SPCS10RSA",
     "https://fred.stlouisfed.org/series/CSUSHPISA",
     "https://fred.stlouisfed.org/series/CPILFESL",
+    "https://fred.stlouisfed.org/series/CNP16OV",
+    "https://fred.stlouisfed.org/series/WPUIP2311001",
 )
 fred_descriptions = (
     """
@@ -119,6 +123,26 @@ fred_descriptions = (
     Release: Consumer Price Index  
     Units:  Index 1982-1984=100, Seasonally Adjusted
     Frequency:  Monthly
+    """,
+    """
+    CNP16OV 
+    Civilian noninstitutional population is defined as persons 16 years of age and older 
+    residing in the 50 states and the District of Columbia, who are not inmates of 
+    institutions (e.g., penal and mental facilities, homes for the aged), and who are not 
+    on active duty in the Armed Forces. 
+    Source: U.S. Bureau of Labor Statistics  
+    Release: Employment Situation  
+    Units:  Thousands of Persons, Not Seasonally Adjusted
+    Frequency:  Monthly
+    """,
+    """
+    WPUIP2311001 
+    Producer Price Index by Commodity: Inputs to Industries: Net Inputs to Residential 
+    Construction, Goods. 
+    Source: U.S. Bureau of Labor Statistics  
+    Release: Producer Price Index  
+    Units:  Index Jun 1986=100, Not Seasonally Adjusted
+    Frequency:  Monthly 
     """,
 )
 
