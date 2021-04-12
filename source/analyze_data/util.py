@@ -62,7 +62,13 @@ def normalize_dataframe(data_frame, column):
 
 
 def generate_ts_plot(
-    df, beg_line, end_line, p_ylabel, p_title, legend_loc="lower right", yaxis_scale="linear"
+    df,
+    beg_line,
+    end_line,
+    p_ylabel,
+    p_title,
+    legend_loc="lower right",
+    yaxis_scale="linear",
 ):
     """ A function used to generate a scatterplot for housing prices/index data
             In:
@@ -170,6 +176,7 @@ def generate_heatmap(mask, cmap, corr, title):
         linecolor="grey",
         cbar=False,
         annot=True,
+        annot_kws={"size": 16},
         ax=ax,
         mask=mask,
     )
