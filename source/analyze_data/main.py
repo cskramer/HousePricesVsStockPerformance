@@ -412,6 +412,22 @@ def main():
     )
     scat_fig.savefig(scat_plot_fname, format="png")
 
+    # ################       Recreate the Shiller Irrational Exuberance Chart      ################
+
+    sec_df = raw_df[["SPCS10RSA", "WPUIP2311001", "CNP16OV", "MORTGAGE30US"]]
+    norm_sec_df = util.normalize_columns(sec_df, sec_df.columns).dropna()
+
+    ts_fname = os.path.join(output_dir, "ShillerIrrationalExhuberanceChart.png")
+    ts_fig = util.generate_ts_plot(
+        norm_sec_df,
+        SPCS_BUBBLE_BEGIN,
+        SPCS_BUBBLE_END,
+        "Normalized Values",
+        "Shiller Irrational Exuberance Chart",
+        legend_loc="upper left",
+    )
+    ts_fig.savefig(ts_fname, format="png")
+
 
 if __name__ == "__main__":
     main()
