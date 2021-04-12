@@ -39,11 +39,12 @@ def normalize_columns(df, cols):
     """
     # normalized_df=(df-df.min())/(df.max()-df.min())
     # normalized_df=(df-df.mean())/df.std()
+    ldf = df.copy()
     for col_name in cols:
-        df[col_name] = (df[col_name] - df[col_name].min()) / (
-            df[col_name].max() - df[col_name].min()
+        ldf[col_name] = (ldf[col_name] - ldf[col_name].min()) / (
+            ldf[col_name].max() - ldf[col_name].min()
         )
-    return df.copy()
+    return ldf
 
 
 def normalize_dataframe(data_frame, column):
