@@ -62,7 +62,7 @@ def normalize_dataframe(data_frame, column):
 
 
 def generate_ts_plot(
-    df, beg_line, end_line, p_ylabel, p_title, legend_loc="lower right"
+    df, beg_line, end_line, p_ylabel, p_title, legend_loc="lower right", yaxis_scale="linear"
 ):
     """ A function used to generate a scatterplot for housing prices/index data
             In:
@@ -85,6 +85,7 @@ def generate_ts_plot(
 
     df_plot.set_title(p_title)
     df_plot.set_ylabel(p_ylabel)
+    df_plot.set_yscale(yaxis_scale)
     df_plot.legend(loc=legend_loc)
     return df_plot.get_figure()
 

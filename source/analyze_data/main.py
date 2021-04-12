@@ -414,17 +414,17 @@ def main():
 
     # ################       Recreate the Shiller Irrational Exuberance Chart      ################
 
-    sec_df = raw_df[["SPCS10RSA", "WPUIP2311001", "CNP16OV", "MORTGAGE30US"]]
-    norm_sec_df = util.normalize_columns(sec_df, sec_df.columns).dropna()
+    sec_df = raw_df[["SPCS10RSA", "WPUIP2311001", "CNP16OV", "MORTGAGE30US"]].dropna()
+    norm_sec_df = util.normalize_columns(sec_df, sec_df.columns)
 
     ts_fname = os.path.join(output_dir, "ShillerIrrationalExhuberanceChart.png")
     ts_fig = util.generate_ts_plot(
         norm_sec_df,
-        SPCS_BUBBLE_BEGIN,
-        SPCS_BUBBLE_END,
+        None,
+        None,
         "Normalized Values",
         "Shiller Irrational Exuberance Chart",
-        legend_loc="upper left",
+        legend_loc="best",
     )
     ts_fig.savefig(ts_fname, format="png")
 
