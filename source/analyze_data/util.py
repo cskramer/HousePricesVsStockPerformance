@@ -41,7 +41,7 @@ def normalize_columns(df, cols):
     # normalized_df=(df-df.mean())/df.std()
     ldf = df.copy()
     for col_name in cols:
-        ldf[col_name] = (ldf[col_name] - ldf[col_name].min()) / (
+        ldf.loc[:, (col_name)] = (ldf[col_name] - ldf[col_name].min()) / (
             ldf[col_name].max() - ldf[col_name].min()
         )
     return ldf
